@@ -12,6 +12,11 @@ Routine::Routine()
 {
     reset();
     backGraph_ = LoadGraph("graph/Dark Gothic Castle.png");
+    titleGraph_ = LoadGraph("graph/ahoge-samunegazou.png");
+    hitSount_ = LoadSoundMem("sound/大砲2.mp3");
+    bgm_ = LoadSoundMem("sound/死後の世界.mp3");
+
+    PlaySoundMem(bgm_, DX_PLAYTYPE_LOOP, TRUE);
 }
 
 /// <summary>
@@ -20,6 +25,9 @@ Routine::Routine()
 Routine::~Routine()
 {
     DeleteGraph(backGraph_);
+    DeleteGraph(titleGraph_);
+    DeleteSoundMem(hitSount_);
+    DeleteSoundMem(bgm_);
 }
 
 /// <summary>
@@ -47,14 +55,17 @@ void Routine::gameRoop()
         switch (sceneManager->GetsceneType_())
         {
         case TITLE:
+            SetFontSize(100);
             title();
             break;
 
         case PLAY:
+            SetFontSize(50);
             play();
             break;
 
         case RESULT:
+            SetFontSize(100);
             result();
             break;
 
@@ -69,12 +80,15 @@ void Routine::gameRoop()
 
 void Routine::title()
 {
-    DrawExtendGraph(0, 0, screenWIDTH, screenHEIGHT, backGraph_, TRUE);
+    DrawExtendGraph(0, 0, screenWIDTH, screenHEIGHT, titleGraph_, TRUE);
+    DrawString(575, 800, "Enterでスタート", GetColor(255, 0, 0));
+    sceneManager->proceedToPlay();
 }
 
 void Routine::play()
 {
     DrawExtendGraph(0, 0, screenWIDTH, screenHEIGHT, backGraph_, TRUE);
+    DrawString(800, 1000, "A,Dで移動、マウスで標準移動、spaceで食べる", GetColor(255, 255, 255));
 
     spawnEnemy();
 
@@ -100,6 +114,8 @@ void Routine::play()
         if (pos.x > 1920 || pos.x < 0 || hitShotWithEnemy(e,p))
         {
             it = enemy.erase(it);
+            PlaySoundMem(hitSount_, DX_PLAYTYPE_BACK, TRUE);
+            dieCount_++;
         }
         else
         {
@@ -117,7 +133,18 @@ void Routine::play()
 
 void Routine::result()
 {
+    DrawString(700, 500, "GAMEOVER", GetColor(255, 0, 0));
+    DrawFormatString(650, 600, GetColor(255, 0, 0), "討伐数：%d", dieCount_);
+    DrawString(500, 800, "spaceでタイトルへ戻る", GetColor(255, 0, 0));
 
+    if (CheckHitKey(KEY_INPUT_SPACE) == true)
+    {
+        sceneManager->proceedToTitle();
+
+        player->reset();
+        enemy.clear();
+        reset();
+    } 
 }
 
 void Routine::spawnEnemy()
@@ -136,4 +163,5 @@ void Routine::reset()
     spawnCount_ = 0;
     timer_ = 0;
     spawnLevel_ = 30;
+    dieCount_ = 0;
 }

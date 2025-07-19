@@ -33,7 +33,7 @@ void GarlicShot::draw()
 {
 	DrawExtendGraph(position_.x, position_.y, position_.x + widht, position_.y + height, graphHandle_, TRUE);
 
-	DrawBox(position_.x, position_.y, position_.x + widht, position_.y + height, GetColor(255, 0, 0), FALSE);
+	//DrawBox(position_.x, position_.y, position_.x + widht, position_.y + height, GetColor(255, 0, 0), FALSE);
 }
 
 void GarlicShot::dieShot()

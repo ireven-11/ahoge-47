@@ -7,6 +7,7 @@ Player::Player()
 	LoadDivGraph("graph/Boy_Sheet.png",graph_max_number,graph_x_number,graph_y_number, graph_size, graph_size,graphHandle_);
 	graphGarlic_ = LoadGraph("graph/043776-removebg-preview.png");
 	siteGraph_	= LoadGraph("graph/26695953.png");
+	eatSound_ = LoadSoundMem("sound/Ç®âŸéqÇêHÇ◊ÇÈ1.mp3");
 	reset();
 }
 
@@ -15,6 +16,7 @@ Player::~Player()
 	DeleteGraph(*graphHandle_);
 	DeleteGraph(graphGarlic_);
 	DeleteGraph(siteGraph_);
+	DeleteSoundMem(eatSound_);
 }
 
 void Player::reset()
@@ -27,6 +29,8 @@ void Player::reset()
 	gage_			= 0;
 	gageLevel_		= 1;
 	throwCount_		= 0;
+	canPlaySound_	= true;
+	garlicShot_.clear();
 }
 
 void Player::update()
@@ -94,7 +98,7 @@ void Player::draw()
 	GetMousePoint(&mouseX_, &mouseY_);
 	DrawExtendGraph(mouseX_ - graph_width / 2, mouseY_ - graph_height /2, mouseX_ + graph_width / 2, mouseY_ + graph_height / 2, siteGraph_, TRUE);
 
-	DrawBox(position_.x, position_.y, position_.x + graph_width, position_.y + graph_height, GetColor(255, 0, 0), FALSE);
+	//DrawBox(position_.x, position_.y, position_.x + graph_width, position_.y + graph_height, GetColor(255, 0, 0), FALSE);
 }
 
 void Player::checkHitKeyMove()
@@ -116,10 +120,17 @@ void Player::checkHitKeyEat()
 	if (CheckHitKey(KEY_INPUT_SPACE) == true)
 	{
 		state_ = eatState_();
+		if (canPlaySound_)
+		{
+			PlaySoundMem(eatSound_, DX_PLAYTYPE_LOOP, TRUE);
+			canPlaySound_ = false;
+		}
 	}
 	else
 	{
 		state_ = moveState_();
+		StopSoundMem(eatSound_, 0);
+		canPlaySound_ = true;
 	}
 }
 

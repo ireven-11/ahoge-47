@@ -24,6 +24,10 @@ private:
 	int spawnCount_;
 	int timer_;
 	int spawnLevel_;
+	int titleGraph_;
+	int hitSount_;
+	int bgm_;
+	int dieCount_;
 
 	const int max_spawn_count = 5;
 

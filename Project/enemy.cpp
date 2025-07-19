@@ -25,7 +25,7 @@ void Enemy::draw()
 {
 	DrawExtendGraph(position_.x, position_.y, position_.x + graph_widht, position_.y + graph_height, graphHandle_, TRUE);
 
-	DrawBox(position_.x, position_.y, position_.x + graph_widht, position_.y + graph_height, GetColor(255,0,0),FALSE);
+	//DrawBox(position_.x, position_.y, position_.x + graph_widht, position_.y + graph_height, GetColor(255,0,0),FALSE);
 }
 
 void Enemy::reset()

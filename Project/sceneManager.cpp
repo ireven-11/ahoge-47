@@ -21,11 +21,24 @@ SceneManager::~SceneManager()
 /// </summary>
 void SceneManager::reset()
 {
-	sceneType_ = PLAY;
+	sceneType_ = TITLE;
 }
 
 
 void SceneManager::proceedToResult()
 {
 	sceneType_ = RESULT;
+}
+
+void SceneManager::proceedToPlay()
+{
+	if (CheckHitKey(KEY_INPUT_RETURN) == true)
+	{
+		sceneType_ = PLAY;
+	}
+}
+
+void SceneManager::proceedToTitle()
+{
+		sceneType_ = TITLE;
 }

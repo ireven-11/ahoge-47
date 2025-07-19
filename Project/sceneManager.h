@@ -16,6 +16,8 @@ public:
 
 	void reset();	//ƒŠƒZƒbƒgˆ—
 	void proceedToResult();
+	void proceedToPlay();
+	void proceedToTitle();
 
 	int GetsceneType_()const { return sceneType_; }
 

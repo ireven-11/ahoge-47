@@ -25,6 +25,7 @@ public:
 	void checkHitKeyEat();
 	void addGage();
 	void throwGarlic();
+	void reset()override;
 
 	list<shared_ptr<GarlicShot>> garlicShot_;
 
@@ -32,7 +33,6 @@ public:
 	int		GetgageLevel_()const { return gageLevel_; }
 
 private:
-	void reset()override;
 	void pushBack();
 	
 	int		graphHandle_[48];
@@ -47,6 +47,8 @@ private:
 	int		mouseX_;
 	int		mouseY_;
 	int		siteGraph_;
+	int		eatSound_;
+	bool	canPlaySound_;
 
 	const int graph_max_number	= 48;
 	const int graph_x_number	= 8;
