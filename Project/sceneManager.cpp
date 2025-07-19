@@ -23,3 +23,9 @@ void SceneManager::reset()
 {
 	sceneType_ = PLAY;
 }
+
+
+void SceneManager::proceedToResult()
+{
+	sceneType_ = RESULT;
+}

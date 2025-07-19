@@ -1,5 +1,8 @@
 #pragma once
 
+const int widht = 100;
+const int height = 100;
+
 class Player;
 
 class GarlicShot
@@ -10,8 +13,10 @@ public:
 
 	void update();
 	void reset(Player* player);
+	void dieShot();
 
-	VECTOR Getposition_()const { return position_; }
+	VECTOR	Getposition_()const { return position_; }
+	bool	GetcanExist_()const { return canExist_; }
 
 private:
 	void draw();
@@ -24,7 +29,5 @@ private:
 	double	rotationAngle_;
 	int		graphHandle_ = LoadGraph("graph/043776-removebg-preview.png");
 	
-	const int shot_speed	= 10;
-	const int widht			= 100;
-	const int height		= 100;
+	const int shot_speed	= 30;
 };

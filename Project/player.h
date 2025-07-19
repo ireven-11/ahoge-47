@@ -26,8 +26,10 @@ public:
 	void addGage();
 	void throwGarlic();
 
+	list<shared_ptr<GarlicShot>> garlicShot_;
+
 	VECTOR Getposition_()const { return position_; }
-	int		Get
+	int		GetgageLevel_()const { return gageLevel_; }
 
 private:
 	void reset()override;
@@ -41,7 +43,6 @@ private:
 	int		graphGarlic_;
 	int		gage_;
 	int		gageLevel_;
-	list<shared_ptr<GarlicShot>> garlicShot_;
 	int		throwCount_;
 	int		mouseX_;
 	int		mouseY_;
@@ -56,12 +57,11 @@ private:
 	const int animation_run_max_range = 28;
 	const int animation_eat		= 33;
 	const int count_up_time		= 10;
-	const int move_speed		= 5;
-	const int garlic_div_number = 3;
+	const int move_speed		= 7;
 	const int garlic_width		= 50;
 	const int garlic_height		= 50;
 	const int garlic_shift_number = 45;
-	const int gage_max_number	= 200;
+	const int gage_max_number	= 150;
 	const int throw_count_max_number = 40;
 	
 	//ó‘Ô

@@ -25,7 +25,7 @@ void Player::reset()
 	waitCount_		= 0;
 	isFacingRight_	= false;
 	gage_			= 0;
-	gageLevel_		= 0;
+	gageLevel_		= 1;
 	throwCount_		= 0;
 }
 

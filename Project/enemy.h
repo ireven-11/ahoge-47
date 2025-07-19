@@ -9,8 +9,10 @@ public:
 
 	void update()override;
 	void draw()override;
+	void die();
 
-	VECTOR Getposition_()const { return position_; }
+	VECTOR	Getposition_()const { return position_; }
+	bool	GetcanExist_()const { return canExist_; }
 
 private:
 	void reset()override;
@@ -24,5 +26,5 @@ private:
 	int		graph_height = 200;
 	bool	isRight_;
 
-	const int move_speed = 5;
+	const int move_speed = 10;
 };

@@ -9,12 +9,16 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
+	DeleteGraph(graphHandle_);
 }
 
 void Enemy::update()
 {
-	move();
-	draw();
+	if (canExist_)
+	{
+		move();
+		draw();
+	}
 }
 
 void Enemy::draw()
@@ -56,4 +60,9 @@ void Enemy::move()
 			position_.x += move_speed;
 		}
 	}
+}
+
+void Enemy::die()
+{
+	canExist_ = false;
 }

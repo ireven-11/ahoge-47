@@ -27,11 +27,8 @@ Routine::~Routine()
 /// </summary>
 void Routine::game()
 {
-    //インスタンス化
-    std::shared_ptr<SceneManager>sceneManager = std::make_shared<SceneManager>();
-
     //ゲームループ呼び出し
-    gameRoop(sceneManager);
+    gameRoop();
 
     //デリート
     sceneManager = nullptr;
@@ -40,7 +37,7 @@ void Routine::game()
 /// <summary>
 /// ゲームループ
 /// </summary>
-void Routine::gameRoop(shared_ptr<SceneManager> sceneManager)
+void Routine::gameRoop()
 {
     while (gameRoopSetting)
     {
@@ -62,6 +59,8 @@ void Routine::gameRoop(shared_ptr<SceneManager> sceneManager)
             break;
 
         }
+
+        SetFPS();
 
         // 裏画面の内容を表画面に反映(ゲームループの最後に呼ぶ)
         ScreenFlip();
@@ -87,15 +86,32 @@ void Routine::play()
 
         auto pos = (*it)->Getposition_();
 
-        hitPlayerWithEnemy(*it, player);
-        if (pos.x > 1920 || pos.x < 0)
+        Enemy* e = dynamic_cast<Enemy*>(it->get());
+        Player* p = dynamic_cast<Player*>(player.get());
+
+        if (e && p) 
         {
-            it = enemy.erase(it);  // erase は次のイテレータを返す
+            if (hitPlayerWithEnemy(e, p))
+            {
+                sceneManager->proceedToResult();
+            }
+        }
+
+        if (pos.x > 1920 || pos.x < 0 || hitShotWithEnemy(e,p))
+        {
+            it = enemy.erase(it);
         }
         else
         {
             ++it;
         }
+    }
+
+    timer_++;
+    if (timer_ > 500 && spawnLevel_ > 1)
+    {
+        timer_ = 0;
+        spawnLevel_--;
     }
 }
 
@@ -108,7 +124,7 @@ void Routine::spawnEnemy()
 {
     spawnCount_++;
 
-    if (spawnCount_ == max_spawn_count)
+    if (spawnCount_ == max_spawn_count * spawnLevel_)
     {
         enemy.emplace_back(make_shared<Enemy>());
         spawnCount_ = 0;
@@ -118,4 +134,6 @@ void Routine::spawnEnemy()
 void Routine::reset()
 {
     spawnCount_ = 0;
+    timer_ = 0;
+    spawnLevel_ = 30;
 }

@@ -15,6 +15,7 @@ public:
 	~SceneManager();
 
 	void reset();	//ƒŠƒZƒbƒgˆ—
+	void proceedToResult();
 
 	int GetsceneType_()const { return sceneType_; }
 
