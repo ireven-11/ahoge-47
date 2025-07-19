@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ヘッダー ファイル\chara">
+      <UniqueIdentifier>{6dc6dfb8-756f-45f1-a604-d3173b666a06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\chara">
+      <UniqueIdentifier>{0f3f4f01-852b-4062-8c02-516284d1530b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\chara\state">
+      <UniqueIdentifier>{2489e755-e70e-4dbc-98d4-994c40a49bd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\chara\state">
+      <UniqueIdentifier>{5ba6fce8-b9d0-4c4c-aaa7-040d6d17a42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ui">
+      <UniqueIdentifier>{3c2f99c8-662f-4c4a-ba3c-7d478003a015}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,6 +42,24 @@
     <ClCompile Include="setting.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="charaBase.cpp">
+      <Filter>ソース ファイル\chara</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>ソース ファイル\chara</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>ソース ファイル\chara</Filter>
+    </ClCompile>
+    <ClCompile Include="eat.cpp">
+      <Filter>ソース ファイル\chara\state</Filter>
+    </ClCompile>
+    <ClCompile Include="move.cpp">
+      <Filter>ソース ファイル\chara\state</Filter>
+    </ClCompile>
+    <ClCompile Include="garlicShot.cpp">
+      <Filter>ソース ファイル\chara</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -40,6 +73,36 @@
     </ClInclude>
     <ClInclude Include="sceneManager.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="charaBase.h">
+      <Filter>ヘッダー ファイル\chara</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>ヘッダー ファイル\chara</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>ヘッダー ファイル\chara</Filter>
+    </ClInclude>
+    <ClInclude Include="iState.h">
+      <Filter>ヘッダー ファイル\chara\state</Filter>
+    </ClInclude>
+    <ClInclude Include="move.h">
+      <Filter>ヘッダー ファイル\chara\state</Filter>
+    </ClInclude>
+    <ClInclude Include="eat.h">
+      <Filter>ヘッダー ファイル\chara\state</Filter>
+    </ClInclude>
+    <ClInclude Include="titleUI.h">
+      <Filter>ヘッダー ファイル\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="playUI.h">
+      <Filter>ヘッダー ファイル\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="resultUI.h">
+      <Filter>ヘッダー ファイル\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="garlicShot.h">
+      <Filter>ヘッダー ファイル\chara</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

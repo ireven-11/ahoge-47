@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="charaBase.cpp" />
+    <ClCompile Include="eat.cpp" />
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="garlicShot.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="move.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="routine.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="setting.cpp" />
@@ -136,9 +142,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="charaBase.h" />
+    <ClInclude Include="eat.h" />
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="garlicShot.h" />
+    <ClInclude Include="iState.h" />
+    <ClInclude Include="move.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="playUI.h" />
+    <ClInclude Include="resultUI.h" />
     <ClInclude Include="routine.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="setting.h" />
+    <ClInclude Include="titleUI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

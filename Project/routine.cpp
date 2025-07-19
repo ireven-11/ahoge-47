@@ -2,12 +2,15 @@
 #include"routine.h"
 #include"setting.h"
 #include"sceneManager.h"
+#include"enemy.h"
 
 /// <summary>
 /// コンストラクタ
 /// </summary>
 Routine::Routine()
 {
+    reset();
+    backGraph_ = LoadGraph("graph/Dark Gothic Castle.png");
 }
 
 /// <summary>
@@ -15,6 +18,7 @@ Routine::Routine()
 /// </summary>
 Routine::~Routine()
 {
+    DeleteGraph(backGraph_);
 }
 
 /// <summary>
@@ -65,15 +69,50 @@ void Routine::gameRoop(shared_ptr<SceneManager> sceneManager)
 
 void Routine::title()
 {
-
+    DrawExtendGraph(0, 0, screenWIDTH, screenHEIGHT, backGraph_, TRUE);
 }
 
 void Routine::play()
 {
+    DrawExtendGraph(0, 0, screenWIDTH, screenHEIGHT, backGraph_, TRUE);
 
+    spawnEnemy();
+
+    player->update();
+
+    for (auto it = enemy.begin(); it != enemy.end(); )
+    {
+        (*it)->update();
+
+        auto pos = (*it)->Getposition_();
+        if (pos.x > 1920 || pos.x < 0)
+        {
+            it = enemy.erase(it);  // erase は次のイテレータを返す
+        }
+        else
+        {
+            ++it;
+        }
+    }
 }
 
 void Routine::result()
 {
 
+}
+
+void Routine::spawnEnemy()
+{
+    spawnCount_++;
+
+    if (spawnCount_ == max_spawn_count)
+    {
+        enemy.emplace_back(make_shared<Enemy>());
+        spawnCount_ = 0;
+    }
+}
+
+void Routine::reset()
+{
+    spawnCount_ = 0;
 }
