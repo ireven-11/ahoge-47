@@ -27,6 +27,7 @@ public:
 	void throwGarlic();
 
 	VECTOR Getposition_()const { return position_; }
+	int		Get
 
 private:
 	void reset()override;

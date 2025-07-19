@@ -2,6 +2,5 @@
 
 class Enemy;
 class Player;
-
-void hitPlayerWithEnemy(Enemy* enemy, Player* player);
-void hitShotWithEnemy(Enemy* enemy, Player* player);
+bool hitPlayerWithEnemy(Enemy* enemy, Player* player);
+bool hitShotWithEnemy(Enemy* enemy, Player* player);

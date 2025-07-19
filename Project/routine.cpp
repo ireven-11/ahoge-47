@@ -3,6 +3,7 @@
 #include"setting.h"
 #include"sceneManager.h"
 #include"enemy.h"
+#include"collision.h"
 
 /// <summary>
 /// コンストラクタ
@@ -85,6 +86,8 @@ void Routine::play()
         (*it)->update();
 
         auto pos = (*it)->Getposition_();
+
+        hitPlayerWithEnemy(*it, player);
         if (pos.x > 1920 || pos.x < 0)
         {
             it = enemy.erase(it);  // erase は次のイテレータを返す
