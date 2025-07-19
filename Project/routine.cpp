@@ -108,7 +108,7 @@ void Routine::play()
     }
 
     timer_++;
-    if (timer_ > 500 && spawnLevel_ > 1)
+    if (timer_ > 300 && spawnLevel_ > 1)
     {
         timer_ = 0;
         spawnLevel_--;
