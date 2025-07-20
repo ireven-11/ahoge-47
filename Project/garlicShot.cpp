@@ -15,9 +15,9 @@ void GarlicShot::reset(Player* player)
 {
 	position_		= VGet(player->Getposition_().x, player->Getposition_().y, 0);
 	canExist_		= true;
-	moveVector_		= VGet(shot_speed * player->GetgageLevel_(), 0, 0);
+	moveVector_		= VGet(shot_speed, 0, 0);
 	GetMousePoint(&mouseX_, &mouseY_);
-	moveVector_ = VGet((mouseX_ - position_.x) / 50, (mouseY_ - position_.y) / 50, 0);
+	moveVector_ = VGet((mouseX_ - position_.x) / (100 - player->GetgageLevel_() * 9), (mouseY_ - position_.y) / (100 - player->GetgageLevel_() * 9), 0);
 }
 
 void GarlicShot::update()

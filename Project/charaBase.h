@@ -12,6 +12,7 @@ public:
 	virtual void reset();
 
 	virtual VECTOR Getposition_()const = 0;
+	virtual int	GetgageLevel_()const = 0;
 
 private:
 };

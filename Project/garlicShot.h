@@ -29,5 +29,5 @@ private:
 	double	rotationAngle_;
 	int		graphHandle_ = LoadGraph("graph/043776-removebg-preview.png");
 	
-	const int shot_speed	= 30;
+	const int shot_speed	= 20;
 };

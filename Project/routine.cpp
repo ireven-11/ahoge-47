@@ -89,6 +89,7 @@ void Routine::play()
 {
     DrawExtendGraph(0, 0, screenWIDTH, screenHEIGHT, backGraph_, TRUE);
     DrawString(800, 1000, "A,Dで移動、マウスで標準移動、spaceで食べる", GetColor(255, 255, 255));
+    DrawFormatString(0, 0, GetColor(255, 0, 0), "ニンニクパワー：%d", player->GetgageLevel_());
 
     spawnEnemy();
 
@@ -123,12 +124,9 @@ void Routine::play()
         }
     }
 
-    timer_++;
-    if (timer_ > 300 && spawnLevel_ > 1)
-    {
-        timer_ = 0;
-        spawnLevel_--;
-    }
+    /*DrawFormatString(650, 600, GetColor(255, 0, 0), "討伐数：%d", dieCount_);
+    DrawFormatString(650, 700, GetColor(255, 0, 0), "スポーンレベル：%d", spawnLevel_);
+    DrawFormatString(650, 800, GetColor(255, 0, 0), "スポーンkaunnto：%d", spawnCount_);*/
 }
 
 void Routine::result()
@@ -155,6 +153,11 @@ void Routine::spawnEnemy()
     {
         enemy.emplace_back(make_shared<Enemy>());
         spawnCount_ = 0;
+        if (spawnLevel_ > 5)
+        {
+            spawnLevel_--;
+        }
+        
     }
 }
 

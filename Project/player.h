@@ -63,7 +63,7 @@ private:
 	const int garlic_width		= 50;
 	const int garlic_height		= 50;
 	const int garlic_shift_number = 45;
-	const int gage_max_number	= 150;
+	const int gage_max_number	= 200;
 	const int throw_count_max_number = 40;
 	
 	//ó‘Ô

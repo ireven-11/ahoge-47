@@ -13,6 +13,7 @@ public:
 
 	VECTOR	Getposition_()const { return position_; }
 	bool	GetcanExist_()const { return canExist_; }
+	int		GetgageLevel_()const { return 0; }
 
 private:
 	void reset()override;

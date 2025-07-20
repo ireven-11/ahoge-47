@@ -150,7 +150,7 @@ void Player::addGage()
 {
 	gage_++;
 
-	if (gage_max_number > gage_)
+	if (gage_max_number == gage_ && gageLevel_ < 10)
 	{
 		gage_ = 0;
 		gageLevel_++;
@@ -160,7 +160,7 @@ void Player::addGage()
 void Player::throwGarlic()
 {
 	throwCount_++;
-	if (throwCount_==throw_count_max_number)
+	if (throwCount_ > throw_count_max_number - gageLevel_ * 2)
 	{
 		garlicShot_.emplace_back(make_shared<GarlicShot>(this));
 		throwCount_ = 0;
