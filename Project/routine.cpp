@@ -112,36 +112,22 @@ void Routine::play()
             }
         }
 
-        //場外死
-        if (pos.x > 1920 || pos.x < 0 || hitShotWithEnemy(e,p))
+        bool isOutScreen = pos.x > 1920 || pos.x < 0;
+        bool isHit = hitShotWithEnemy(e, p);
+
+        if (isOutScreen || isHit)
         {
             it = enemy.erase(it);
-            PlaySoundMem(hitSount_, DX_PLAYTYPE_BACK, TRUE);
-            dieCount_++;
+
+            if (isHit)
+            {
+                PlaySoundMem(hitSount_, DX_PLAYTYPE_BACK, TRUE);
+                dieCount_++;
+            }
         }
         else
         {
             ++it;
-        }
-
-        //場外死
-        if (pos.x > 1920 || pos.x < 0)
-        {
-            it = enemy.erase(it);
-        }
-        else
-        {
-            //ニンニク死
-            if (hitShotWithEnemy(e, p))
-            {
-                it = enemy.erase(it);
-                PlaySoundMem(hitSount_, DX_PLAYTYPE_BACK, TRUE);
-                dieCount_++;
-            }
-            else
-            {
-                ++it;
-            }
         }
     }
 
@@ -177,7 +163,8 @@ void Routine::spawnEnemy()
         if (spawnLevel_ > 5)
         {
             spawnLevel_--;
-        }  
+        }
+        
     }
 }
 
