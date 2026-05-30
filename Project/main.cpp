@@ -1,4 +1,4 @@
-#include"DxLib.h"
+#include"DxLibForIreven.h"
 #include"setting.h" 
 #include"routine.h"
 
@@ -8,10 +8,7 @@ int WINAPI WinMain(winmainSetting)
     ScreenSetting();
 
     //dxlibを初期化
-    if (DxLib_Init() == -1)
-    {
-        return -1;
-    }
+    InitDxLib();
 
     //ルーチンをインスタンス化してゲーム開始して終わったらデリート
     std::shared_ptr<Routine>routine = std::make_shared<Routine>();

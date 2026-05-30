@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="charaBase.h" />
     <ClInclude Include="collision.h" />
+    <ClInclude Include="DxLibForIreven.h" />
     <ClInclude Include="eat.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="garlicShot.h" />
